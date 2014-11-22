@@ -6,6 +6,7 @@
 var express = require('express'),
   routes = require('./routes'),
   cache = require('./routes/cache'),
+  smsService = require('./routes/smsService'),
   http = require('http'),
   path = require('path');
 var app = express();
@@ -31,6 +32,11 @@ app.get("/cache/:key", cache.getCache);
 app.put("/cache", cache.putCache);
 app.delete("/cache/:key", cache.removeCache);
 
-http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
-});
+// Twilio SMS stuff
+app.post('/twilio/send_sms', smsService.httpSms);
+
+//http.createServer(app).listen(app.get('port'), function(){
+//  console.log('Express server listening on port ' + app.get('port'));
+//});
+
+module.exports = app;

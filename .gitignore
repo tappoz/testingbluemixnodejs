@@ -1,2 +1,10 @@
+# Ignoring modules installed by `npm`
+node_modules/
+# Ignoring configuration files created by IntelliJ IDEA 
 .idea/
+# Twilio configuration details:
+# 1) use the smsConfigSample.js to fill your details
+# 2) then rename it to smsConfig.js
+config/dev/smsConfig.js
+
 
