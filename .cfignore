@@ -1,0 +1,3 @@
+# Ignoring modules installed by `npm`
+node_modules/
+

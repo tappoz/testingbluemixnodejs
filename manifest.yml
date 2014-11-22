@@ -5,7 +5,7 @@ applications:
   disk_quota: 1024M
   host: testingbluemixnodejs
   name: testingbluemixnodejs
-  command: node app.js
+  command: node bin/www.js
   path: .
   domain: eu-gb.mybluemix.net
   instances: 1

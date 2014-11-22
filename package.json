@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "A sample nodejs app using Elastic Caching Service for Bluemix",
   "scripts": {
-    "start": "node app.js"
+    "start": "node bin/www.js"
   },
   "dependencies": {
     "app-config": "^0.1.4",
