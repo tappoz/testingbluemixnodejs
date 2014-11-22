@@ -1,8 +1,7 @@
-//var express = require('express');
-//var router = express.Router();
 var config = require('app-config');
-var smsIntegration = require('../methods/SmsIntegration');
+var smsIntegration = require('../methods/smsIntegration');
 
+// TODO set the receiver mobile number in the configuration object!
 // the hardcoded mobile number to send to the sms text
 var sendSmsToThisNumber = config.smsConfig.receiverMsisdn;
 
@@ -14,13 +13,10 @@ function sendSms(dataObj, res) {
   );
 }
 
-//router.post('/send_sms', httpSms);
-//function httpSms(req, res) {
 exports.httpSms = function(req, res) {
-  console.log(req);
+  //console.log(req);
   var reqBody = req.body;
   console.log('The body of the request: ' + JSON.stringify(reqBody));
   sendSms(reqBody, res);
 }
 
-//module.exports = router;

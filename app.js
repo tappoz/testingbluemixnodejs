@@ -6,15 +6,14 @@
 var express = require('express'),
   routes = require('./routes'),
   cache = require('./routes/cache'),
-  smsService = require('./routes/smsService'),
+  sms = require('./routes/sms'),
   http = require('http'),
   path = require('path');
 var app = express();
 
 // all environments
-// https://developer.ibm.com/answers/questions/22585/pushing-nodejs-app.html
-app.set('port', process.env.VCAP_APP_PORT || 3000);
-app.set('host',process.env.VCAP_APP_HOST || 'localhost');
+app.set('port', process.env.VCAP_APP_PORT || 3000); // Bluemix needs to set its own port at runtime
+app.set('host', process.env.VCAP_APP_HOST || 'localhost');
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.use(express.favicon());
@@ -35,10 +34,6 @@ app.put("/cache", cache.putCache);
 app.delete("/cache/:key", cache.removeCache);
 
 // Twilio SMS stuff
-app.post('/twilio/send_sms', smsService.httpSms);
-
-//http.createServer(app).listen(app.get('port'), function(){
-//  console.log('Express server listening on port ' + app.get('port'));
-//});
+app.post('/twilio/send_sms', sms.httpSms);
 
 module.exports = app;
